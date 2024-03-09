@@ -1,5 +1,6 @@
 #include "money.h"
 
+//default constructor
 Money::Money(){
     dollars = 0;
     cents = 0;
@@ -7,6 +8,7 @@ Money::Money(){
     usCurrency = true;
 }
 
+//parameterized constructor
 Money::Money(int dollars, int cents, double conversionRate, bool usCurrency){
     dollars = dollars;
     cents = cents;
@@ -14,6 +16,7 @@ Money::Money(int dollars, int cents, double conversionRate, bool usCurrency){
     usCurrency = usCurrency;
 }
 
+//copy constructor
 Money::Money(const Money& oldMoney){
     dollars = oldMoney.dollars;
     cents = oldMoney.cents;
@@ -21,7 +24,7 @@ Money::Money(const Money& oldMoney){
     usCurrency = oldMoney.usCurrency;
 }
 
-
+//basic getters and setters
 int Money::getDollars(){
     return dollars;
 }

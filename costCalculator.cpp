@@ -1,5 +1,6 @@
 #include "costCalculator.h"
 
+//default constructor
 template <class Type>
 CostCalculator<Type>::CostCalculator(){
     cost = 0;
@@ -7,6 +8,7 @@ CostCalculator<Type>::CostCalculator(){
     amount = 0;
     currency = Type();
 }
+//parameterized constructor
 template <class Type>
 CostCalculator<Type>::CostCalculator(double newCost, double newChange, int newAmount, Type newCurrency){
     cost = newCost;
@@ -14,6 +16,7 @@ CostCalculator<Type>::CostCalculator(double newCost, double newChange, int newAm
     amount = newAmount;
     currency = newCurrency;
 }
+//copy constructor
 template <class Type>
 CostCalculator<Type>::CostCalculator(const CostCalculator& oldCalculator){
     cost = oldCalculator.cost;
@@ -22,6 +25,7 @@ CostCalculator<Type>::CostCalculator(const CostCalculator& oldCalculator){
     currency = oldCalculator.currency;
 }
 
+//basic getters and setters
 template <class Type>
 double CostCalculator<Type>::getCost(){
     return cost;
@@ -60,11 +64,11 @@ void CostCalculator<Type>::setCurrency( Type newCurrency){
     currency = newCurrency;
 }
 
+//calculating transactions
 template <class Type>
 void CostCalculator<Type>::calcCost(){
     cost = amount * currency.getConversionRate() * 1.0175;
 }
-
 template <class Type>
 void CostCalculator<Type>::calcChange(double userCurrency){
     change = userCurrency - cost;

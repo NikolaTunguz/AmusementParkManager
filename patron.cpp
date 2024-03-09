@@ -1,5 +1,6 @@
 #include "patron.h"
 
+//default constructor
 Patron::Patron(){
     numRides = 0;
     setFirstName("NONE");
@@ -9,6 +10,7 @@ Patron::Patron(){
 
     patronRides = new Ride*[100];
 }
+//parameterized constructor
 Patron::Patron(string first, string last, int patronNum, int numRides, int numT, Ride* rideArray){
     setFirstName(first);
     setLastName(last);
@@ -19,6 +21,7 @@ Patron::Patron(string first, string last, int patronNum, int numRides, int numT,
         patronRides[i] = &rideArray[i];
     }
 }
+//copy constructor
 Patron::Patron(const Patron& oldPatron){
     setFirstName(oldPatron.firstName);
     setLastName(oldPatron.lastName);
@@ -32,11 +35,7 @@ Patron::Patron(const Patron& oldPatron){
 
 
 }
-
-//Patron::~Patron(){
-//    delete [] patronRides;
-//}
-
+//basic getters and setters
 string Patron::getFirstName(){
     return firstName;
 }
@@ -55,12 +54,19 @@ int Patron::getPatronNumber(){
 void Patron::setPatronNumber(int num){
     patronNumber = num;
 }
-
-
 Ride** Patron::getPatronRides(){
     return patronRides;
 }
+void Patron::setNumTickets(int num){
+    numTickets = num;
+}
 
+int Patron::getNumTickets(){
+    return numTickets;
+}
+
+
+//adds a ride to a patron
 void Patron::addPatronRide(Ride* newRide){
     patronRides[numRides] = newRide;
     numRides++;
@@ -70,6 +76,7 @@ void Patron::displayName(){
     cout << getFirstName() <<  " " << getLastName() << endl;
 }
 
+//displays patron information
 void Patron::displayPatronData(){
     cout << getFirstName() <<  " " << getLastName() << " " << getPatronNumber() << " " << getNumTickets() << endl << "Has admittance to: ";
     for(int i = 0; i < numRides; i++){
@@ -77,12 +84,4 @@ void Patron::displayPatronData(){
         cout << name << " ";
     }
     cout << endl;
-}
-
-void Patron::setNumTickets(int num){
-    numTickets = num;
-}
-
-int Patron::getNumTickets(){
-    return numTickets;
 }

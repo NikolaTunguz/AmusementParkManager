@@ -1,22 +1,25 @@
 #include "ride.h"
 
+//default constructor
 Ride::Ride(){
     setRideName("NONE");
     setNumTicketsNecessary(0);
-    //setHeightRestricted(true);
     heightRestricted = true;
 }
+//parameterized constructor
 Ride::Ride(int num, string rideName, bool restricted){
     setRideName(rideName);
     setNumTicketsNecessary(num);
-    //setHeightRestricted(restricted);
     heightRestricted = restricted;
 }
+//copy constructor
 Ride::Ride(const Ride& oldRide){
     name = oldRide.name;
     numTicketsNecessary = oldRide.numTicketsNecessary;
     heightRestricted = oldRide.heightRestricted;
 }
+
+//basic setters and getters
 int Ride::getNumTicketsNecessary(){
     return numTicketsNecessary;
 }
@@ -32,9 +35,3 @@ void Ride::setRideName(string newName){
 bool Ride::getHeightRestricted(){
     return heightRestricted;
 }
-
-/*
-void Ride::setHeightRestricted(bool restricted){
-    heightRestricted= restricted;
-}
-*/
